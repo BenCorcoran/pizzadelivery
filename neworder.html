@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Your Previous Orders</h2>
+
+{% if orders %}
+    <div class="list-group">
+        {% for order in orders %}
+            <div class="list-group-item">
+                <h5>Pizza: {{ order.size }} - {{ order.crust }} - {{ order.sauce }} - {{ order.cheese }}</h5>
+                <p>
+                    {% if order.pepperoni %} Pepperoni, {% endif %}
+                    {% if order.chicken %} Chicken, {% endif %}
+                    {% if order.ham %} Ham, {% endif %}
+                    {% if order.pineapple %} Pineapple, {% endif %}
+                    {% if order.peppers %} Peppers, {% endif %}
+                    {% if order.mushrooms %} Mushrooms, {% endif %}
+                    {% if order.onions %} Onions {% endif %}
+                </p>
+                <p>Ordered on: {{ order.created_at }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>You haven't placed any orders yet.</p>
+{% endif %}
+
+<a href="/createpizza">Create new order</a>
+
+{% endblock %}

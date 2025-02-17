@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <title>Create your pizza</title>
+</head>
+<body>
+    <h2>Create your pizza</h2> 
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label for="id_size">Select Size:</label>
+        {{ form.size }}
+        <br>
+
+        <label for="id_crust">Select Crust Type:</label>
+        {{ form.crust }}
+        <br>
+
+        <label for="id_sauce">Select Sauce:</label>
+        {{ form.sauce }}
+        <br>
+
+        <label for="id_cheese">Select Cheese:</label>
+        {{ form.cheese }}
+        <br>
+
+        <h3>Select Toppings:</h3>
+        <label>{{ form.pepperoni }} Pepperoni</label><br>
+        <label>{{ form.chicken }} Chicken</label><br>
+        <label>{{ form.ham }} Ham</label><br>
+        <label>{{ form.pineapple }} Pineapple</label><br>
+        <label>{{ form.peppers }} Peppers</label><br>
+        <label>{{ form.mushrooms }} Mushrooms</label><br>
+        <label>{{ form.onions }} Onions</label><br>
+
+        <button type="submit">Order pizza</button>
+</body>
+
+{% endblock %}

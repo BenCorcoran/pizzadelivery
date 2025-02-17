@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <h1>Order Details</h1>
+        
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% else %}
+            <h3>Pizza</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Size:</strong> {{ pizza.size }}</li>
+                <li class="list-group-item"><strong>Crust:</strong> {{ pizza.crust }}</li>
+                <li class="list-group-item"><strong>Sauce:</strong> {{ pizza.sauce }}</li>
+                <li class="list-group-item"><strong>Cheese:</strong> {{ pizza.cheese }}</li>
+                <li class="list-group-item">
+                    <strong>Toppings:</strong>
+                    <ul>
+                        {% if pizza.pepperoni %}<li>Pepperoni</li>{% endif %}
+                        {% if pizza.chicken %}<li>Chicken</li>{% endif %}
+                        {% if pizza.ham %}<li>Ham</li>{% endif %}
+                        {% if pizza.pineapple %}<li>Pineapple</li>{% endif %}
+                        {% if pizza.peppers %}<li>Peppers</li>{% endif %}
+                        {% if pizza.mushrooms %}<li>Mushrooms</li>{% endif %}
+                        {% if pizza.onions %}<li>Onions</li>{% endif %}
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Delivery Details</h3>
+            <ul class="list-group mt-3">
+                <li class="list-group-item"><strong>Name:</strong> {{ delivery.name }}</li>
+                <li class="list-group-item"><strong>Address:</strong> {{ delivery.address }}</li>
+                <li class="list-group-item"><strong>Card Number:</strong> **** **** **** {{ delivery.card_number|slice:":4" }}</li>
+                <li class="list-group-item"><strong>Card Expiry Date:</strong> {{ delivery.card_expiry_date }}</li>
+                <li class="list-group-item"><strong>CVV:</strong> *** (hidden for security)</li>
+                <li class="list-group-item"><strong>Order Created At:</strong> {{ delivery.created_at }}</li>
+            </ul>
+        {% endif %}
+    </div>
+
+{% endblock %}
