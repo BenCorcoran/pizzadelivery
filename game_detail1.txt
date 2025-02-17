@@ -1,0 +1,23 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}{{ game.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ game.name }}</h1>
+<p>{{ game.description }}</p>
+<p>Platform: {{ game.platform }}</p>
+<p>Genre: {{ game.genre }}</p>
+<p>Price: ${{ game.price }}</p>
+<p>Stock: {{ game.stock }}</p>
+
+{% if game.stock > 0 %}
+    <form action="{% url 'add_to_basket' game.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Add to Basket</button>
+    </form>
+{% else %}
+    <p style="color: red;">Out of Stock</p>
+{% endif %}
+
+<a href="{% url 'game_list' %}">Back to All Games</a>
+{% endblock %}

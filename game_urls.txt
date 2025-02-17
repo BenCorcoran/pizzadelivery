@@ -1,0 +1,10 @@
+from django.urls import path
+from .views import game_list, game_detail, console_games, add_to_basket, basket_view
+
+urlpatterns = [
+    path('', game_list, name='game_list'),
+    path('game/<int:game_id>/', game_detail, name='game_detail'),
+    path('console/<str:platform>/', console_games, name='console_games'),
+    path('add_to_basket/<int:game_id>/', add_to_basket, name='add_to_basket'),
+    path('basket/', basket_view, name='basket_view'),
+]

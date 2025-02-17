@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}{{ platform }} Games{% endblock %}
+
+{% block content %}
+<h1>{{ platform }} Games</h1>
+<ul>
+    {% for game in games %}
+        <li>
+            <a href="{% url 'game_detail' game.id %}">{{ game.name }}</a> - ${{ game.price }}
+            {% if game.stock == 0 %}
+                <span style="color: red;">(Out of Stock)</span>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No games available for {{ platform }}.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

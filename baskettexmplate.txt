@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Shopping Basket{% endblock %}
+
+{% block content %}
+<h1>Your Basket</h1>
+
+{% if basket_items %}
+    <ul>
+        {% for item in basket_items %}
+            <li>{{ item.quantity }} x {{ item.game.name }} - ${{ item.game.price }}</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Total: ${{ total_price }}</strong></p>
+{% else %}
+    <p>Your basket is empty.</p>
+{% endif %}
+
+<a href="{% url 'game_list' %}">Continue Shopping</a>
+{% endblock %}

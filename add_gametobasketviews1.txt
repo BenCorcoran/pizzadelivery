@@ -1,0 +1,13 @@
+def add_to_basket(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+
+    if game.stock > 0:
+        basket_item, created = BasketItem.objects.get_or_create(game=game)
+        basket_item.quantity += 1
+        basket_item.save()
+
+        # Decrease stock
+        game.stock -= 1
+        game.save()
+
+    return redirect('basket_view')

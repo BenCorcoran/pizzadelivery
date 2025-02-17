@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Game Shop{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'game_list' %}">All Games</a>
+        <a href="{% url 'console_games' platform='PS5' %}">PS5</a>
+        <a href="{% url 'console_games' platform='XBOX' %}">Xbox</a>
+        <a href="{% url 'console_games' platform='SWITCH' %}">Switch</a>
+        <a href="{% url 'basket_view' %}">Shopping Basket</a>
+    </nav>
+
+    <hr>
+
+    {% block content %}{% endblock %}
+</body>
+</html>
